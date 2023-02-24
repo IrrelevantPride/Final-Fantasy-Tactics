@@ -1,6 +1,7 @@
 .org 0x80059d5c
 
             # FindEmptyPartySlot(isguest) -> partyindex
+            # 
             # This routine searches through the party data by checking the party index (byte 0x01) for 0xFF and returning the first instance of 0xFF.
             # The vanilla routine does this through two loops and wastes space because of that.
             # The vanilla routine also stores a value of 0 in the address provided in r5. The higher functions should take care of this, and this rewrite
