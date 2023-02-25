@@ -13,7 +13,6 @@ def create_xml():
         offset = get_offset(string_offset)
         label = file.replace(" ", "_")
         label = label.replace(".asm", "")
-        print(label)
         et.SubElement(
             patch,
             "Location",
