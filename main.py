@@ -13,26 +13,34 @@ def create_xml():
         offset = get_offset(string_offset)
         label = file.replace(" ", "_")
         label = label.replace(".asm", "")
-        et.SubElement(
+        location = et.SubElement(
             patch,
             "Location",
             file = "SCUS_942_21",
             offset = offset,
-            mode = "ASM",
             offsetMode = "RAM",
+            mode = "ASM",
             label = label,
             inputFile = file
         )
+        
+        if not offset:
+            location.attrib.pop("offset")
+            location.attrib.pop("offsetMode")
+
     tree = et.ElementTree(patches)
     et.indent(tree, space="\t", level = 0)
     tree.write(name + ".xml", encoding="utf-8", xml_declaration = True)
 
 
 def get_offset(string_offset):
-    offset = np.uint32(int(string_offset, 16))
-    offset &= 0x7FFFFFFF
-    offset = str(hex(offset))
-    return offset.replace("0x", "")
+    try:
+        offset = np.uint32(int(string_offset, 16))
+        offset &= 0x7FFFFFFF
+        offset = str(hex(offset))
+        return offset.replace("0x", "")
+    except:
+        return False
 
 if __name__ == "__main__":
     create_xml()

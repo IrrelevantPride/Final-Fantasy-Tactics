@@ -2,9 +2,9 @@
 
             # FindEmptyPartySlot(isguest) -> partyindex
             # 
-            # This routine searches through the party data by checking the party index (byte 0x01) for 0xFF and returning the first instance of 0xFF.
-            # The vanilla routine does this through two loops and wastes space because of that.
-            # The vanilla routine also stores a value of 0 in the address provided in r5. The higher functions should take care of this, and this rewrite
+            # This function searches through the party data by checking the party index (byte 0x01) for 0xFF and returning the first instance of 0xFF.
+            # The vanilla function does this through two loops and wastes space because of that.
+            # The vanilla function also stores a value of 0 in the address provided in r5. The higher functions should take care of this, and this rewrite
             # includes minor edits to the Save Unit to Party (80059bb0) and Get Free Party Slot Status (801c6000) to accommodate this change.
             # For non-guest units, the search is through party index 0 - 15, and for guest units the search is through 16 - 20.
             # This saves from 0x80059dcc - 0x80059e17 (19 instructions or 76 bytes) over the vanilla implementation.
