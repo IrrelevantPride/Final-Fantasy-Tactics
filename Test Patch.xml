@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<Patches>
-	<Patch name="SCUS Modifications">
-		<Location file="SCUS_942_21" offset="59ed4" mode="ASM" offsetMode="RAM" label="Find_Empty_Party_Slot_and_Generate_Unit" inputFile="Find Empty Party Slot and Generate Unit.asm" />
-		<Location file="SCUS_942_21" offset="59d5c" mode="ASM" offsetMode="RAM" label="Find_Free_Party_Index" inputFile="Find Free Party Index.asm" />
-	</Patch>
-</Patches>
