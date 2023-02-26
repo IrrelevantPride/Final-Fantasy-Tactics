@@ -8,7 +8,7 @@
         # This function saves space by getting the unit index from the Find_Free_Party_Index and 
         # removing the extra loop.
 
-            .label @Get_Party_Data_Pointer, 0x00059af0
+            .label @Get_Party_Data_Pointer, 0x80059af0
             .label @Generate_Unit, 0x80059ffc
 
                 addiu   sp, sp, -20                     # 
