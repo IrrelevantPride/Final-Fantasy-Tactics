@@ -1,6 +1,5 @@
 .org 0x80059e18
 
-            .label @Find_Free_Party_Index_and_Generate_Unit, 0x80059ed4
             .label @Get_Party_Data_Pointer, 0x80059af0
             .label @Calculate_Zodiac_From_Birthday, 0x8005e5d8
             
@@ -46,10 +45,10 @@ calculate_zodiac:
                 sb      s1, 5(s0)                       # unit.birthday = birthday
                 move    v0, s3                          # return partyid
 
-end:            lw      ra, 28(sp)                      #
-                lw      s0, 24(sp)                      #
-                lw      s1, 20(sp)                      #
-                lw      s2, 16(sp)                      #
-                lw      s3, 12(sp)                      #
-                jr      ra                              #
-                addiu   sp, sp, 32                      #
+end:            lw      ra, 28(sp)                      # 
+                lw      s0, 24(sp)                      # 
+                lw      s1, 20(sp)                      # 
+                lw      s2, 16(sp)                      # 
+                lw      s3, 12(sp)                      # 
+                jr      ra                              # 
+                addiu   sp, sp, 32                      # 

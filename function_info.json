@@ -1,0 +1,24 @@
+{
+    "SCUS_942_21" : {
+        "location tag" : "SCUS_942_21",
+        "Find Free Party Index" : {
+            "file name" : "Find Free Party Index.asm",
+            "offset" : ["80059d5c"]
+        },
+        "Create Monster Egg" : {
+            "file name": "Create Monster Egg.asm"
+        },
+        "Find Free Party Index and Generate Unit" : {
+            "file name" : "Find Free Party Index and Generate Unit.asm",
+            "offset" : ["80059ed4"]
+        }
+    },
+    "WORLD" : {
+        "location tag" : "WORLD_WORLD_BIN",
+        "Repoint Create Monster Egg" : {
+            "file name" : "Repoint Create Monster Egg.asm",
+            "offset" : ["80125c88"],
+            "inline" : true
+        }
+    }
+}

@@ -16,7 +16,7 @@
                 sw      s0, 12(sp)                      # 
                 sw      s1, 8(sp)                       # 
                 move    s0, a0                          # unit_type = a0
-                jal     @Find_Empty_Party_Index         # partyid = Find_Free_Party_Index(isguest = False)
+                jal     @Find_Free_Party_Index          # partyid = Find_Free_Party_Index(isguest = False)
                 li      a0, 0                           # 
                 li      v1, -1                          # 
                 beq     v1, v0, end                     # if partyid == -1: return -1
