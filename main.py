@@ -71,11 +71,13 @@ def save_asm_files_to_directory():
     function_info = load_json("function_info.json")
     for location in function_info:
         folder_path = path.join(save_directory, location)
-        if not path.isdir(folder_path): mkdir(folder_path)
         for file in listdir(location):
+            name = file.replace(".asm", "")
+            if function_info[location][name].get("inline"): break
             source = path.join(location, file)
             destination = path.join(save_directory, source)
             if path.isfile(source):
+                if not path.isdir(folder_path): mkdir(folder_path)
                 copy(source, destination)
 
 def save_xml_to_directory(xml_file):

@@ -11,9 +11,9 @@
                 move    s0, a0                          # jobid = a0
                 move    s1, a1                          # birthday = a1
                 move    s2, a2                          # eggmod = a2
-                
+
                 jal     @Find_Free_Party_Index_and_Generate_Unit
-                
+
                 li      a0, 3                           # partyid = Find_Free_Party_Index_and_Generate_Unit(unit_type = unit_type.MONSTER)
                 move    s3, v0                          # s2 = partyid 
                 li      v0, -1                          # 

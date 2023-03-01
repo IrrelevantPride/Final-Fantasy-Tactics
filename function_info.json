@@ -11,6 +11,11 @@
         "Find Free Party Index and Generate Unit" : {
             "file name" : "Find Free Party Index and Generate Unit.asm",
             "offset" : ["80059ed4"]
+        },
+        "Save Unit to Party Edit" : {
+            "file name" : "Save Unit to Party Edit.asm",
+            "offset" : ["80059ca8"],
+            "inline" : true
         }
     },
     "WORLD" : {
@@ -18,6 +23,14 @@
         "Repoint Create Monster Egg" : {
             "file name" : "Repoint Create Monster Egg.asm",
             "offset" : ["80125c88"],
+            "inline" : true
+        }
+    },
+    "REQUIRE.OUT" :{
+        "location tag" : "EVENT_REQUIRE_OUT",
+        "Get Free Party Slot Status Edit" : {
+            "file name" : "Get Free Party Slot Status Edit.asm",
+            "offset" : ["801c6074"],
             "inline" : true
         }
     }
