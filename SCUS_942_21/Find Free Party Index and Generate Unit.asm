@@ -1,6 +1,6 @@
 .org 0x80059ed4
 
-        # Find_Free_Party_Index_and_Generate_Unit(unit_type)
+        # Find_Free_Party_Index_and_Generate_Unit(unit_type) -> partyid
         # This function finds an empty party slot and generates a new unit there.
         # This is used for the Soldier Office units, monsters hatched from eggs, and to generate Ramza.
         # Only takes one parameter, unit_type, to determine if the unit is a male, female, Ramza or monster
@@ -28,7 +28,7 @@
                 move    a0, v0                          # 
                 jal     @Generate_Unit                  # Generate_Unit(unit, unit_type)
                 move    a1, s0                          # 
-                
+                move    v0, s1                          # return partyid
 end:            lw      ra, 16(sp)                      # 
                 lw      s0, 12(sp)                      # 
                 lw      s1, 8(sp)                       # 
