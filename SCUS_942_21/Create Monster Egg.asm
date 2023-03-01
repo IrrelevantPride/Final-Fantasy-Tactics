@@ -1,5 +1,3 @@
-.org 0x80059e18
-
             .label @Get_Party_Data_Pointer, 0x80059af0
             .label @Calculate_Zodiac_From_Birthday, 0x8005e5d8
             
@@ -16,9 +14,9 @@
                 
                 jal     @Find_Free_Party_Index_and_Generate_Unit
                 
-                li      a0, 3                           # partyid = Find_Free_Party_Index_and_Generate_Unit(unit_type = 3)
+                li      a0, 3                           # partyid = Find_Free_Party_Index_and_Generate_Unit(unit_type = unit_type.MONSTER)
                 move    s3, v0                          # s2 = partyid 
-                li      v0, -1                          #
+                li      v0, -1                          # 
                 beq     v0, zero, end                   # if partyid == -1: return -1
                 nop                                     #
                 jal     @Get_Party_Data_Pointer         # unit = Get_Party_Data_Pointer(partyid)
@@ -32,7 +30,7 @@
                 sltiu   v1, a0, 0x16e                   #
                 bne     v1, zero, calculate_zodiac      # if not legalbirthday:
                 move    s0, v0                          # s0 = unit
-                li      a0, 1                           #   birthday = 1
+                li      a0, 1                           #   birthday = 1 
 
 calculate_zodiac:
                 jal     @Calculate_Zodiac_From_Birthday # zodiac = Calculate_Zodiac_From_Birthday(birthday)
