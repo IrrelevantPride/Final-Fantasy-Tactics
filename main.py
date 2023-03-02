@@ -1,6 +1,7 @@
 import json
 import xml.etree.ElementTree as et
 from os import path, listdir, mkdir
+from typing import List
 from pathlib import Path
 from numpy import uint32
 from shutil import copy
@@ -18,22 +19,36 @@ def create_xml():
                 patch,
                 "Location"
             )
-            file_name = function_info[gamefile][function].get("file name")
-            offset = function_info[gamefile][function].get("offset")
+
+            file_name : str  = function_info[gamefile][function].get("file name")
+            offsets : List = function_info[gamefile][function].get("offset")
+            specific : List = function_info[gamefile][function].get("specific")
+            createlabel : bool = function_info[gamefile][function].get("label")
             
-            if offset:
-                if len(offset) < 2:
-                    offset = get_offset(offset)
+            if offsets:
+                offsets = get_offset(offsets)
+                if len(offsets) < 2:
                     location.attrib["file"] = file
-                    location.attrib["offset"] = offset[0]
+                    location.attrib["offset"] = offsets[0]
                 else:
-                    location.attrib["specific"] = f"{file}: {', '.join(offset)}"
-            
+                    location.attrib["specific"] = f"{file}: {', '.join(offsets)}"
+
+            elif specific:
+                for key, offsets in specific.items():
+                    offsets = get_offset(offsets)
+
+                    if location.attrib.get("specific"):
+                        location.attrib["specific"] += f", {key}: {', '.join(offsets)}"
+
+                    else:
+                        location.attrib["specific"] = f"{key}: {', '.join(offsets)}"
+
             location.attrib["offsetMode"] = "RAM"
             location.attrib["mode"] = "ASM"
-            label = file_name.replace(" ", "_")
-            label = label.replace(".asm", "")
-            location.attrib["label"] = label
+            if createlabel:
+                label = file_name.replace(" ", "_")
+                label = label.replace(".asm", "")
+                location.attrib["label"] = label
             
             if function_info[gamefile][function].get("inline"):
                 location.text = f"\n{Path(path.join(gamefile, file_name)).read_text()}"
